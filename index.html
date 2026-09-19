@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClimateWatch AI — Extreme Weather Anomaly Intelligence</title>
+  <meta name="description" content="AI-driven spatio-temporal tracking of extreme weather anomalies in medium-range forecasts." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-orb">🌍</div>
+        <div>
+          <strong>Climate<span>Watch AI</span></strong>
+          <small>Predict Today. Safer Tomorrow.</small>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-section="overview">⌂ <span>Overview</span></button>
+        <button class="nav-item" data-section="map">⌖ <span>Live Map</span></button>
+        <button class="nav-item" data-section="forecast">☁ <span>Forecast</span></button>
+        <button class="nav-item" data-section="anomalies">⚠ <span>Anomalies</span></button>
+        <button class="nav-item" data-section="analytics">▥ <span>Analytics</span></button>
+        <button class="nav-item" data-section="insights">✦ <span>AI Insights</span></button>
+        <button class="nav-item" data-section="reports">▤ <span>Reports</span></button>
+        <button class="nav-item" data-section="sources">◉ <span>Data Sources</span></button>
+        <button class="nav-item" data-section="settings">⚙ <span>Settings</span></button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="mission-card">
+          <div class="mission-glow"></div>
+          <h3>A Safer<br>Climate-Resilient<br>Tomorrow</h3>
+          <p>AI-assisted monitoring for extreme-weather decision support.</p>
+        </div>
+        <div class="footer-line">ClimateWatch AI · Hackathon Prototype</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">AI-DRIVEN SPATIO-TEMPORAL TRACKING</div>
+          <h1>Extreme Weather Anomalies</h1>
+          <p>Medium-range forecast intelligence dashboard</p>
+        </div>
+        <div class="top-actions">
+          <label class="date-control">▣ <input id="dateInput" type="date"></label>
+          <span class="live-pill"><i></i><span id="connectionText">API READY</span></span>
+          <button class="icon-btn" id="alertBtn">♢<b id="alertCount">0</b></button>
+          <button class="avatar">AW</button>
+        </div>
+      </header>
+
+      <section id="overview" class="page-section active-section">
+        <div class="stat-grid" id="statGrid"></div>
+
+        <div class="content-grid">
+          <section class="panel map-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Live Weather Anomaly Map</h2>
+                <p>Real-time and forecast anomaly visualization</p>
+              </div>
+              <div class="segmented" id="regionTabs">
+                <button class="active">India</button><button>South Asia</button><button>World</button>
+              </div>
+            </div>
+
+            <div class="map-toolbar">
+              <input id="locationSearch" placeholder="Search location..." />
+              <button id="locateBtn">⌖</button>
+              <button id="resetMapBtn">↺</button>
+            </div>
+
+            <div class="map-stage" id="mapStage">
+              <div class="map-grid"></div>
+              <div class="india-shape" aria-label="map visualization">
+                <div class="heat-zone z1"></div>
+                <div class="heat-zone z2"></div>
+                <div class="rain-zone z3"></div>
+                <div class="storm-zone z4"></div>
+                <span class="map-label l1">Punjab</span>
+                <span class="map-label l2">Rajasthan</span>
+                <span class="map-label l3">Assam</span>
+                <span class="map-label l4">Odisha</span>
+                <span class="map-label l5">Arabian Sea</span>
+                <span class="map-label l6">Bay of Bengal</span>
+                <button class="event-pin pin1" data-region="Punjab" title="Punjab heatwave">🔥</button>
+                <button class="event-pin pin2" data-region="Assam" title="Assam rainfall">🌧</button>
+                <button class="event-pin pin3" data-region="Rajasthan" title="Rajasthan drought">☀</button>
+                <button class="event-pin pin4" data-region="Odisha" title="Odisha storm">🌀</button>
+              </div>
+
+              <div class="map-controls">
+                <button id="zoomIn">+</button><button id="zoomOut">−</button><button id="mapCenter">⌾</button>
+              </div>
+
+              <div class="layers">
+                <h4>Layers</h4>
+                <label><input type="checkbox" checked data-layer="temperature"> Temperature</label>
+                <label><input type="checkbox" checked data-layer="rainfall"> Rainfall</label>
+                <label><input type="checkbox" data-layer="wind"> Wind</label>
+                <label><input type="checkbox" data-layer="humidity"> Humidity</label>
+                <label><input type="checkbox" data-layer="pressure"> Pressure</label>
+                <hr>
+                <h4>Anomaly Types</h4>
+                <label><input type="checkbox" checked> 🔥 Heatwave</label>
+                <label><input type="checkbox" checked> 🌧 Extreme Rainfall</label>
+                <label><input type="checkbox" checked> ☀ Drought</label>
+                <label><input type="checkbox" checked> 🌀 Severe Storm</label>
+                <label><input type="checkbox" checked> ≋ Flood Risk</label>
+              </div>
+
+              <div class="timeline">
+                <span>Past</span>
+                <input id="timeSlider" type="range" min="0" max="6" value="3">
+                <span>Forecast</span>
+                <div class="timeline-labels"><span>-72h</span><span>-48h</span><span>-24h</span><b>Now</b><span>+24h</span><span>+48h</span><span>+72h</span></div>
+              </div>
+            </div>
+          </section>
+
+          <aside class="right-stack">
+            <section class="panel anomaly-card">
+              <div class="panel-head compact">
+                <div><h2>Anomaly Detection</h2><p id="selectedRegion">Select an event</p></div>
+                <button class="text-btn" id="detailsBtn">View Details →</button>
+              </div>
+              <div class="detection-empty" id="detectionEmpty">
+                <div class="big-icon">⌖</div>
+                <strong>No live event selected</strong>
+                <span>Connect a weather/anomaly API or select a map event.</span>
+              </div>
+              <div class="detection-content hidden" id="detectionContent">
+                <div class="risk-title"><span id="eventIcon">🔥</span><strong id="eventTitle">Heatwave Detected</strong><b id="riskBadge">HIGH RISK</b></div>
+                <div class="metric-row"><span>Current value</span><b id="currentValue">—</b></div>
+                <div class="metric-row"><span>Historical baseline</span><b id="baselineValue">—</b></div>
+                <div class="metric-row"><span>Deviation</span><b id="deviationValue">—</b></div>
+                <div class="confidence"><span>AI confidence</span><div><i id="confidenceBar"></i></div><b id="confidenceValue">—</b></div>
+                <button class="primary-btn" id="explainBtn">View AI Explanation</button>
+              </div>
+            </section>
+
+            <section class="panel mini-panel">
+              <div class="panel-head compact"><div><h2>Weather Anomaly Analysis</h2><p>Latest available observation</p></div><select><option>Last 7 days</option><option>Last 30 days</option></select></div>
+              <div class="heatmap-preview"><div class="heatmap-core"></div><span>Data visualization appears when API is connected.</span></div>
+            </section>
+          </aside>
+        </div>
+
+        <div class="bottom-grid">
+          <section class="panel chart-card">
+            <div class="panel-head compact"><div><h2>Forecast: Temperature</h2><p>Selected region</p></div></div>
+            <div class="chart-wrap"><canvas id="forecastChart"></canvas><div class="chart-empty">Waiting for forecast API data…</div></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head compact"><div><h2>Top Regions by Anomaly Risk</h2><p>Sorted by live risk score</p></div><button class="text-btn">View All →</button></div>
+            <div class="table-empty">No live region data loaded yet.</div>
+          </section>
+
+          <section class="panel donut-card">
+            <div class="panel-head compact"><div><h2>Anomaly Distribution</h2><p>Event composition</p></div></div>
+            <div class="donut-empty"><div class="donut"></div><span>Awaiting anomaly API</span></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head compact"><div><h2>Recent Alerts</h2><p>System notifications</p></div><button class="text-btn">View All →</button></div>
+            <div id="alertsList" class="alerts-list"><div class="table-empty">No live alerts.</div></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="map" class="page-section generic-page"><h2>Live Map</h2><p>Use the Overview map as the primary live-map workspace. Replace the API endpoint in <code>api.js</code> to stream real observations.</p></section>
+      <section id="forecast" class="page-section generic-page"><h2>Forecast</h2><p>Forecast workspace ready for model/API integration.</p></section>
+      <section id="anomalies" class="page-section generic-page"><h2>Anomalies</h2><p>Anomaly event explorer ready for real anomaly records.</p></section>
+      <section id="analytics" class="page-section generic-page"><h2>Analytics</h2><p>Analytics workspace ready for time-series and regional comparisons.</p></section>
+      <section id="insights" class="page-section generic-page"><h2>AI Insights</h2><p>Connect your model endpoint to generate explanations from real observations.</p></section>
+      <section id="reports" class="page-section generic-page"><h2>Reports</h2><p>Report-generation UI placeholder. No fabricated results are displayed.</p></section>
+      <section id="sources" class="page-section generic-page"><h2>Data Sources</h2><p>Configure weather, satellite, forecast and model APIs in <code>api.js</code>.</p></section>
+      <section id="settings" class="page-section generic-page"><h2>Settings</h2><p>Frontend settings can be connected to your backend configuration later.</p></section>
+
+      <footer>ClimateWatch AI · AI-Driven Spatio-Temporal Tracking of Extreme Weather Anomalies in Medium-Range Forecasts</footer>
+    </main>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
